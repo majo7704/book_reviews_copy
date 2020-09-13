@@ -11,6 +11,10 @@
               <%= form.text_field(:email, id:"email", type:"email", class:"validate", placeholder:"e.g me@epfl.ch" ) %> 
               <%= form.label(:email,class:"active", for:"email")%>
             </div>
+            <div class="input-field col s12">
+              <%= form.password_field(:password, id:"password", type:"password", class:"validate") %> 
+              <%= form.label(:password,class:"active", for:"password")%>
+            </div>
           </div>
             <%= form.submit('Log in', :class=>"btn waves-effect waves-light col s12") do %>
               <i class="material-icons right">done</i>
