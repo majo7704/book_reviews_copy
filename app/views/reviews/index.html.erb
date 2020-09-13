@@ -1,0 +1,25 @@
+<main>
+<% if(@search_term.present?)%>
+  <div class="container">
+    <h1>There are <%= @reviews_count%> results for: "<%= @search_term%>"</h1>
+  </div>
+<% else %>
+  <div class="container">
+    <h1>Please enter a title or an author!</h1>
+  </div>
+<% end %>
+<% if(@reviews.any?) %>
+  <div class="container">
+    <div class= "row">
+      <% @reviews.each do |review| %>
+      <%= render(partial: 'book_card', 
+                  locals:{book_title: review.title,   image_url: review.image_url, author:review.author, review: review}) %>
+      <% end %> 
+    </div>
+  </div>
+<% else %>
+  <div class="container">
+    <h3> Nothing to display!</h3>
+  </div>
+<% end %>
+</main>

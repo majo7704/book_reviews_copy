@@ -1,0 +1,15 @@
+<div class="card medium hoverable">
+  <div class="card-content">
+    <%= link_to(review_path(review), :title=>review.title) do %>
+      <%= render(partial: 'book_photo', locals: {image_url: review.image_url}) %>
+    <% end %>
+    <div class="card-action">
+      <%= link_to(edit_review_path(review), :title=>'Edit',id:'edit',class:"btn-floating btn right waves-effect waves-light teal lighten-1") do %>
+        <i class="material-icons">edit</i>
+      <% end %>
+      <%= link_to(review_path(review), :title=>'Delete', id:'delete', class:"btn-floating left waves-effect waves-light  red lighten-1", method:'delete', data:{confirm: 'Are you sure?'}) do %>
+        <i class="material-icons">delete</i>
+      <% end %>
+    </div>
+  </div>
+</div>

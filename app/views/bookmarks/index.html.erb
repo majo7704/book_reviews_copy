@@ -1,0 +1,41 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h1>My bookmarked re-views</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class='col s12'>
+        <%= link_to('Create re-view', new_review_path, class:"waves-effect waves-light btn ") %>
+      </div>
+       </div>
+    <div class='row hidden'>
+      <%= @bookmarks.each do |bookmark| %>
+      
+        <div class="col s4  ">
+          <div class="card medium hoverable ">
+            <div class="card-content">
+              <%= link_to(review_path(bookmark), :title=>bookmark.title) do %>
+              <%= render(partial: 'application/book_photo', locals: {image_url: bookmark.image_url}) %>
+              <% end %>
+            <div class="card-action">
+              <%= form_tag user_bookmark_path(session[:user_id], bookmark.id), :title=>'Remove bookmark', id:'delete',  method:'delete' do %>
+              <%= button_tag class:"btn-floating left waves-effect waves-light  red lighten-1" do %>
+                <i class="material-icons">remove</i>
+              <% end %>
+               
+                
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+          </div>
+        <% end %>
+        
+   </div>
+   
+ 
+  </div>
+</main>

@@ -1,0 +1,10 @@
+<main>
+<div class="container">
+<h1>Some books</h1>
+<div class="row">
+<% @reviews.each do |review| %>
+  <%= render(partial: 'book_card', 
+            locals:{book_title: review.title, image_url: review.image_url, author:review.author, review:review}) %>
+<% end %> 
+</div>
+</main>

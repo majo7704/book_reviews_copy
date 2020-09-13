@@ -1,0 +1,16 @@
+<div class="col s4">
+  <div class="card medium hoverable">
+    <div class="card-content">
+      <%= render(partial: 'book_photo', locals: {image_url: image_url}) %>
+      <div class="card-action">
+        <%= link_to(review_path(review),:title=>'Show review', class:"btn-floating btn tooltipped right waves-effect waves-light teal lighten-1") do %>
+        <i class="material-icons">add</i>
+        <% end %>
+        <p>'<%= book_title%>' by <%= author%> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      

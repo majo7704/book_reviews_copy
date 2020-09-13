@@ -1,0 +1,16 @@
+<%= form_tag(reviews_path, class:'col s12', method: 'GET') do %>
+        <div class="row">
+          <div class="container">
+            <div class="input-field col s12">
+
+              <%= text_field_tag('q', nil, id:'input-text', placeholder:'Looking for a book?', type:'text')%>
+              
+              <%= button_tag(:class=>"btn waves-effect waves-light col s12",type:"submit", name:"action") do %>
+                 Search <i class="material-icons center right">send</i> 
+              <% end %>
+              
+            </div>
+          </div>
+        </div>
+<% end %>
+  

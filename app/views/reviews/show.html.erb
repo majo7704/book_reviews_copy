@@ -1,0 +1,53 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <%= render(partial:'book_photo', locals:{image_url: @review.image_url})%>
+      <div class="col s8">
+        <ul class="collection with-header">
+          <li class="collection-header">
+          <% if(@user.present?) %>
+            <%= link_to(edit_review_path(@review),:title=>'Edit', class:"btn-floating btn right waves-effect waves-light teal lighten-1") do %>
+              <i class="material-icons">edit</i>
+              <% end %>
+              <% end %>
+            <h4><%= @review.title %></h4> 
+            <span>by <%= @review.author %></span>
+              <% if(@user.present?) %>
+                <%= form_tag(user_bookmarks_path(@user)) do %>
+                  <%= hidden_field_tag('review_id', @review.id) %>
+                  <%= button_tag(title:'Add', disabled: @disable_add_bookmark, :class=>"btn-floating btn right waves-effect waves-light red lighten-1", :type=>"submit" ) do %>
+                    <i class="material-icons">add</i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </li>
+            <li class="collection-item">
+              <blockquote>"<%= @review.body %>"<span> - review created on
+              <%= @review.created_at.strftime("%d %b '%y") %>
+              </span></blockquete>
+          </li>
+          <% @review.comments.each do |comment| %>
+          <li class="collection-item">
+            <blockquote>"<%= comment.body %>"<span> - review created on
+            <%= comment.created_at.strftime("%d %b '%y") %>
+            </span></blockquete>
+          </li>
+          <% end %>
+        </ul>
+        <% if(@display_add_comment) %>
+          <%= form_for([@review, @comment], html: {class:'col s12'}) do |form| %>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= form.text_area(:body, placeholder:"Write your review here ..." , type:'text', class:'materialize-textarea')%>
+                <%= form.label(:"add a comment" ,class:"active", for:"body")%>
+              </div>
+            </div>
+          <%= form.submit('Submit comment', :class=>"btn waves-effect waves-light col s12") do %>
+          <i class="material-icons right">done</i>
+          <% end %>
+          <% end %>
+        <% end %> 
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,5 @@
+<% if image_url.present? %>
+  <%= image_tag(image_url, :width=>220, :height=>300, class:'responsive-img')  %>
+<% else %>
+  <%= image_tag('http://fpoimg.com/250x340', class:'responsive-img') %>
+<% end %>

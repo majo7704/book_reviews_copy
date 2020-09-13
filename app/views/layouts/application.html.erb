@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookReviews</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,700,700i" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+    <div class='navbar-fixed'>
+      <nav>
+        <div class="nav-wrapper">
+        
+        <div class="container">
+         
+          <%= link_to('Book Re-views <i class="material-icons">home</i>'.html_safe, root_path, class:'brand-logo') %>
+          
+        </div>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if(session[:user_id].nil?)%>
+          <li><%= link_to('About', about_path) %></li>
+          <li><%= link_to('Log In', new_user_path) %></li>
+        <% else %>
+            <li><%= link_to('About', about_path) %></li>
+            <li><%= link_to('Account', account_reviews_path )%></li>
+            <li><%= link_to('Bookmarks', user_bookmarks_path(session[:user_id])) %></li>
+          <% end %>
+        </ul>
+        
+      </div>
+    </nav>
+    </div>
+    <div class="row">
+
+<%= render(partial: 'search_form')%>
+    </div>
+  </header>
+
+    <%= yield %>
+
+    <footer class="page-footer">
+
+    <div class="footer-copyright">
+      <div class="container">
+        © 2020 jolanet
+        
+        
+
+      </div>
+    </div>
+
+  </footer>
+  
+  </body>
+</html>

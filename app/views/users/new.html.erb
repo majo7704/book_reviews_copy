@@ -1,0 +1,22 @@
+<main>
+  <section class="container">
+    <header>
+      <h1>Sign up / Log in</h1>
+    </header>
+    <main>
+      <div class="row">
+        <%= form_for(@user, html: {class:'col s12'}) do |form|%>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= form.text_field(:email, id:"email", type:"email", class:"validate", placeholder:"e.g me@epfl.ch" ) %> 
+              <%= form.label(:email,class:"active", for:"email")%>
+            </div>
+          </div>
+            <%= form.submit('Log in', :class=>"btn waves-effect waves-light col s12") do %>
+              <i class="material-icons right">done</i>
+            <% end %>
+          <% end %>
+      </div>
+    </main>
+  </section>
+</main>

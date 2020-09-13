@@ -1,0 +1,33 @@
+<% if(review.errors.any?) %>
+<div class="row">
+  <div class=" col s12">
+    <i class="material-icons">error</i>
+    <%= review.errors.full_messages.join(' || ') %> 
+  </div>
+</div>
+<% end %>
+<%= form_for(review, html: {class:'col s12'}) do |form| %>
+        <div class="row">
+          <div class="input-field col s6">
+            <%= form.text_field(:title, type:'text')%>
+            <%= form.label(:"book's title" ,class:"active", for:"title")%>
+          </div>
+          <div class="input-field col s6">
+            <%= form.text_field(:author, type:'text')%>
+            <%= form.label(:"author's name" ,class:"validate active", for:"author")%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= form.text_area(:body, placeholder:"Write your review here ..." , type:'text', class:'materialize-textarea')%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= form.text_field(:image_url, placeholder:"Image URL", type:'text')%>
+          </div>
+        </div>
+          <%= form.submit(:class=>"btn waves-effect waves-light col s12") do %>
+          <i class="material-icons right">done</i>
+          <% end %>
+      <% end %>
