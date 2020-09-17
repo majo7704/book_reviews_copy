@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
+  resources :sessions, only: [:new, :create]
+
   resources :users do
     resources :bookmarks
   end
