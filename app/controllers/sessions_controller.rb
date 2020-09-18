@@ -10,5 +10,6 @@ class SessionsController < ApplicationController
     else
       flash[:alert] = 'Email or password were invalid. Plaese try again'
       render 'new'
+    end
   end  
 end

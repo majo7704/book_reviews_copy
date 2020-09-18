@@ -5,7 +5,15 @@
     </header>
     <main>
       <div class="row">
-        
+        <% if(flash.any?)%>
+          <div>
+            <% flash.each do |name, message| %>
+              <div class="<%= name%> "> 
+                <i class="material-icons">error</i><%= message %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
         <%= form_tag(sessions_path, html: {class:'col s12'}) do %>
           <div class="row">
             <div class="input-field col s12">
@@ -17,7 +25,7 @@
               <%= label(:password, nil, class:"active", for:"password")%>
             </div>
           </div>
-            <%= submit_tag(:class=>"btn waves-effect waves-light col s12") do %>
+            <%= submit_tag('Log in', class: "btn waves-effect waves-light col s12") do %>
               <i class="material-icons right">done</i>
             <% end %>
           <% end %>
