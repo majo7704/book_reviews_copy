@@ -8,4 +8,11 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
+  before_validation :downcase_email
+
+  private
+  
+  def downcase_email
+    self.email = email.downcase
+  end
 end
