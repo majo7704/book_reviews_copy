@@ -2,12 +2,11 @@ require "application_system_test_case"
 
 class ShowReviewsTest < ApplicationSystemTestCase
   test "show displays title" do 
-user = User.new email: "me@aol.com"
-    user.save!
-
     visit(new_user_path)
-    fill_in('Email', with: user.email)
-    click_on('Log in')
+    fill_in('email', with: 'monalisa3@epfl.ch')
+    fill_in('password', with: 'password')
+    
+    click_on('Create User')
 
     review=Review.new title: "Enigma", 
                       author: "Robert Harris", 

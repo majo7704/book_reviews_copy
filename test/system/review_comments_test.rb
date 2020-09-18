@@ -2,14 +2,15 @@ require "application_system_test_case"
 
 class ReviewCommentsTest < ApplicationSystemTestCase
   test "adding a Comment to the Review" do
-    user=User.new email:'test@epfl.ch'
+    user=User.new email:'test@epfl.ch', password:'password'
     user.save!
 
     review=Review.new title:"Make it happen", user: user
     review.save!
 
-    visit(new_user_path)
-    fill_in('Email', with: user.email)
+    visit(new_session_path)
+    fill_in('email', with: user.email)
+    fill_in('password', with: user.password)
     click_on('Log in')
 
     visit(review_path(review))

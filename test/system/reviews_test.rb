@@ -2,11 +2,12 @@ require "application_system_test_case"
 
 class ReviewsTest < ApplicationSystemTestCase
   test "create new review" do
-    user = User.new email: "me@aol.com"
+    user = User.new email: "me2@aol.com", password: "password"
     user.save!
 
-    visit(new_user_path)
-    fill_in('Email', with: user.email)
+    visit(new_session_path)
+    fill_in('email', with: user.email)
+    fill_in('password', with: user.password)
     click_on('Log in')
   
     visit(new_review_path)
@@ -33,14 +34,15 @@ class ReviewsTest < ApplicationSystemTestCase
    end 
 
    test "editing Review" do
-    user = User.new email: "me@aol.com"
+    user = User.new email: "me@aol.com", password: "password"
     user.save!
 
-    visit(new_user_path)
-    fill_in('Email', with: user.email)
+    visit(new_session_path)
+    fill_in('email', with: user.email)
+    fill_in('password', with: user.password)
     click_on('Log in')
     
-    review=Review.new title: "Hello you", user: User.new
+    review=Review.new title: "Hello you", user: user
     review.save!
 
     visit(edit_review_path(review))
@@ -120,11 +122,12 @@ class ReviewsTest < ApplicationSystemTestCase
   end 
 
   test "new review with no title" do
-    user = User.new email: "me@aol.com"
+    user = User.new email: "me@gmail.com", password: "password"
     user.save!
 
-    visit(new_user_path)
-    fill_in('Email', with: user.email)
+    visit(new_session_path)
+    fill_in('email', with: user.email)
+    fill_in('password', with: user.password)
     click_on('Log in')
   
 
@@ -136,11 +139,12 @@ class ReviewsTest < ApplicationSystemTestCase
   end 
 
   test "existing review with updating author too long" do
-    user = User.new email: "me@aol.com"
+    user = User.new email: "me4@aol.com", password: "password"
     user.save!
 
-    visit(new_user_path)
-    fill_in('Email', with: user.email)
+    visit(new_session_path)
+    fill_in('email', with: user.email)
+    fill_in('password', with: user.password)
     click_on('Log in')
     review = Review.new author:'George Orwell', 
                         title:'1894',
