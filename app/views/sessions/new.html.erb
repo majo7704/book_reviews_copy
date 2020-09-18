@@ -1,0 +1,27 @@
+<main>
+  <section class="container">
+    <header>
+      <h1>Log in</h1>
+    </header>
+    <main>
+      <div class="row">
+        
+        <%= form_tag(sessions_path, html: {class:'col s12'}) do %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= text_field_tag(:email, nil, id:"email", type:"email", class:"validate", placeholder:"e.g me@epfl.ch" ) %> 
+              <%= label(:email, nil, class:"active", for:"email")%>
+            </div>
+            <div class="input-field col s12">
+              <%= password_field_tag(:password, nil, id:"password", type:"password", class:"validate") %> 
+              <%= label(:password, nil, class:"active", for:"password")%>
+            </div>
+          </div>
+            <%= submit_tag(:class=>"btn waves-effect waves-light col s12") do %>
+              <i class="material-icons right">done</i>
+            <% end %>
+          <% end %>
+      </div>
+    </main>
+  </section>
+</main>
