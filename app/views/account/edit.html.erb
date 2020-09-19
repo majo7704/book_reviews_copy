@@ -1,0 +1,45 @@
+<main>
+  <section class="container">
+    <main>
+      <div class="row">
+        <nav class="nav-extended  teal lighten-3">
+    <div class="nav-content">
+      <ul class="tabs right ">
+        <li class="tab active "><a  class="active"href="#test1">Account</a></li>
+        <li class="tab"><%= link_to('Bookmarks', user_bookmarks_path(session[:user_id])) %></li>
+        <li class="tab "><a href="#test3">Reviews</a></li>
+        <li class="tab"><a href="#test4">Following</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header>
+      <h1>Account details</h1>
+    </header>
+        <%= form_for(current_user, url: account_path, html: {class:'col s12'}) do |form|%>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= form.text_field(:email, id:"email", type:"email", class:"validate", placeholder:"e.g me@epfl.ch" ) %> 
+              <%= form.label(:email,class:"active", for:"email")%>
+            </div>
+            
+        
+          <div class="input-field col s12">
+          <%= form.text_field(:name, id:"first_name", class:"validate" ) %> 
+              <%= form.label(:name,class:"active", for:"first_name_inline")%>
+            
+          </div>
+       
+     
+            <div class="input-field col s12">
+              <%= form.text_field(:avatar_url, id:"last_name", class:"validate") %> 
+              <%= form.label(:avatar_url, class:"active", for:"last_name")%>
+            </div>
+          </div>
+            <%= form.submit('Update account', :class=>"btn waves-effect waves-light col s12") do %>
+              <i class="material-icons right">done</i>
+            <% end %>
+          <% end %>
+      </div>
+    </main>
+  </section>
+</main>

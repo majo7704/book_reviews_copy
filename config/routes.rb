@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :reviews do
     resources :comments
   end
+  
+  get 'account', to: 'account#edit'
+
+  patch 'account', to: 'account#update'
 
   get 'account/reviews'
 
