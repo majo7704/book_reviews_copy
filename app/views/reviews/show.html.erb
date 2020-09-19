@@ -24,13 +24,13 @@
             <li class="collection-item">
               <blockquote>"<%= @review.body %>"<span> - review created on
               <%= @review.created_at.strftime("%d %b '%y") %>
-              </span></blockquete>
+              </span></blockquote>
           </li>
           <% @review.comments.each do |comment| %>
           <li class="collection-item">
             <blockquote>"<%= comment.body %>"<span> - review created on
             <%= comment.created_at.strftime("%d %b '%y") %>
-            </span></blockquete>
+            </span></blockquote>
           </li>
           <% end %>
         </ul>

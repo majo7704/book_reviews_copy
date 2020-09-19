@@ -17,12 +17,12 @@
         <%= form_tag(sessions_path, html: {class:'col s12'}) do %>
           <div class="row">
             <div class="input-field col s12">
-              <%= text_field_tag(:email, nil, id:"email", type:"email", class:"validate", placeholder:"e.g me@epfl.ch" ) %> 
-              <%= label(:email, nil, class:"active", for:"email")%>
+              <%= text_field_tag(:email, nil, id:"email", type:"email", class: "validate", placeholder:"e.g me@epfl.ch" ) %> 
+              <%= label_tag(:email, nil, class: "active", for: "email")%>
             </div>
             <div class="input-field col s12">
-              <%= password_field_tag(:password, nil, id:"password", type:"password", class:"validate") %> 
-              <%= label(:password, nil, class:"active", for:"password")%>
+              <%= password_field_tag(:password, nil, id:"password", type: "password", class: "validate") %> 
+              <%= label_tag(:password, nil, class: "active", for:"password")%>
             </div>
           </div>
             <%= submit_tag('Log in', class: "btn waves-effect waves-light col s12") do %>
