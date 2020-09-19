@@ -15,49 +15,24 @@
 
   <body>
     <header>
-    <div class='navbar-fixed'>
-      <nav>
-        <div class="nav-wrapper">
-        
-        <div class="container">
-         
-          <%= link_to('Book Re-views <i class="material-icons">home</i>'.html_safe, root_path, class:'brand-logo') %>
-          
-        </div>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if(session[:user_id].nil?)%>
-          <li><%= link_to('About', about_path) %></li>
-          <li><%= link_to('Log In', new_user_path) %></li>
-        <% else %>
-            <li><%= link_to('About', about_path) %></li>
-            <li><%= link_to('Account', account_reviews_path )%></li>
-            <li><%= link_to('Bookmarks', user_bookmarks_path(session[:user_id])) %></li>
-          <% end %>
-        </ul>
-        
+      <% if(logged_in?) %>
+        <%= render(partial: 'authenticated_user_header') %>
+      <% else %>
+        <%= render(partial: 'anonymous_user_header') %>
+      <% end %>
+      <div class="row">
+        <%= render(partial: 'search_form')%>
       </div>
-    </nav>
-    </div>
-    
-    <div class="row">
-<%= render(partial: 'search_form')%>
-    </div>
-  </header>
+    </header>
 
     <%= yield %>
 
     <footer class="page-footer">
-
-    <div class="footer-copyright">
-      <div class="container">
-        © 2020 jolanet
-        
-        
-
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 jolanet
+        </div>
       </div>
-    </div>
-
-  </footer>
-  
+    </footer>
   </body>
 </html>
