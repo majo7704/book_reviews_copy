@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   patch 'account', to: 'account#update'
 
   get 'account/reviews'
+  get 'account/bookmarks'
 
   get 'about', to:'about#me'
 

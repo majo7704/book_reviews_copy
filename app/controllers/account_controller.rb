@@ -16,6 +16,10 @@ class AccountController < ApplicationController
     @reviews = user.reviews
   end
 
+  def bookmarks
+    @bookmarks = current_user.bookmarks
+  end
+
   def ensure_authenticated
     redirect_to login_path unless(logged_in?)
   end

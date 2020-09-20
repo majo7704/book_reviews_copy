@@ -5,8 +5,8 @@
         <nav class="nav-extended  teal lighten-3">
     <div class="nav-content">
       <ul class="tabs right ">
-        <li class="tab active "><a  class="active"href="#test1">Account</a></li>
-        <li class="tab"><%= link_to('Bookmarks', user_bookmarks_path(session[:user_id])) %></li>
+        <li class="tab active"><%= link_to('Account', account_path, class: "active") %></li>
+        <li class="tab"><%= link_to('Bookmarks', account_bookmarks_path) %></li>
         <li class="tab "><a href="#test3">Reviews</a></li>
         <li class="tab"><a href="#test4">Following</a></li>
       </ul>

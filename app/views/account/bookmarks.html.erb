@@ -1,0 +1,36 @@
+<main>
+  <section class="container">
+    <main>
+      <div class="row">
+        <nav class="nav-extended  teal lighten-3">
+    <div class="nav-content">
+      <ul class="tabs right ">
+        <li class="tab "><%= link_to('Account', account_path) %></li>
+        <li class="tab active"><%= link_to('Bookmarks', account_bookmarks_path, class: "active") %></li>
+        <li class="tab "><a href="#test3">Reviews</a></li>
+        <li class="tab"><a href="#test4">Following</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header>
+      <h1>My bookmarked re-views</h1>
+    </header>
+   
+<% if(@bookmarks.any?) %>
+
+    <div class= "row">
+      <% @bookmarks.each do |bookmark| %>
+      <%= render(partial: 'bookmark_card', 
+                  locals:{book_title: bookmark.title,   image_url: bookmark.image_url, author:bookmark.author, bookmark: bookmark}) %>
+      <% end %> 
+  
+  </div>
+<% else %>
+  <div class="container">
+    <h3> You don't currently have any bookmarks</h3>
+  </div>
+<% end %>
+</div>
+
+</section>
+</main>
