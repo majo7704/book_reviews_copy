@@ -5,7 +5,12 @@
       <div class="col s8">
         <ul class="collection with-header">
           <li class="collection-header">
-          
+          <% if(@user.present?) %>
+            
+            <%= link_to(edit_review_path(@review),:title=>'Edit', class:"btn-floating btn right waves-effect waves-light teal lighten-1") do %>
+              <i class="material-icons">edit</i>
+              <% end %>
+              <% end %>
              
             <h4><%= @review.title %></h4> 
             <span>by <%= @review.author %></span>

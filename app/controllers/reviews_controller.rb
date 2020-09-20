@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
-  
+  before_action :ensure_authenticated, only: [:edit, :update, :destroy]
+  before_action :ensure_owner,         only: [:edit, :update, :destroy]
+
   def index
     @search_term = params[:q]
     logger.info("Search completed for #{@search_term}.")
@@ -18,9 +20,7 @@ def show
     else
       @user=nil
     end
-    
   end  
-
 
   def new
     @review=Review.new
@@ -64,6 +64,15 @@ def show
 
   def review_resource_params
     params.require(:review).permit(:title, :author, :body, :image_url)
+  end  
+
+  def ensure_owner
+    review = Review.find(params[:id])
+
+    if(review.user == current_user)
+      return 
+    end
+    redirect_to account_path
   end  
   
 end
